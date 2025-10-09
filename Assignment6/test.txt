@@ -1,0 +1,43 @@
+kjbfviuweb
+vklnv
+sv
+evwerb
+wbewr
+bwerb
+wbewrevb
+wbewrwb
+wbewrwb
+wbewr
+jn
+package Assignment6;
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+import java.util.concurrent.*;
+public class Executerservice {
+    public static void main(String[] args) {
+        // ExecutorService executer = new 
+        String directorypath = 
+    }
+}
+class LineCounter {
+    static class LineCountTask implements Callable<Integer>{
+        private final Path filepath;       
+        public LineCountTask(Path filepath){
+            this.filepath = filepath;
+        }
+        @Override
+        public Integer call(){
+            int linecount = 0;
+            try (BufferedReader reader = Files.newBufferedReader(filepath)){
+                while (reader.readLine() != null) {
+                    linecount++;
+                }
+            }
+            catch (Exception e){
+            }
+            return linecount;
+        }
+        
+    }
+}
