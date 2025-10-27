@@ -41,9 +41,9 @@ def recursive(n):
     
     '''
     a = int(n)  # Integer object stored in heap
-    a = 5
+    # a = 5
     if n == 0 or n == 1:
-        return 2
+        return 1
     return n * recursive(n-1)
 
 # Iterative method for finding recursive of a given number n
