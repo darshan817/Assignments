@@ -1,9 +1,7 @@
 from Services.ProductService import *
+
 if __name__ == "__main__":        
-    ALLProducts = [
-        # {'name': "icecream", 'stock':2, 'price':15000, 'location':"indore", 'tags':"grocery"},
-        # {'name': "chocolate", 'stock':2, 'price':1000, 'location':"ujjain", 'tags':"clearance"}
-    ]
+    ALLProducts = []
 
     while 1:
         n = int(input('''

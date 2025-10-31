@@ -83,6 +83,3 @@ def stats(Allproduct):
         print(f"- Total inventory value (clearance): {np.sum(clearance_values):.2f}")
     else:
         print("No clearance-tagged products found.")
-
-
-    

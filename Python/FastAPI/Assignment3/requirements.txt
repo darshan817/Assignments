@@ -1,0 +1,10 @@
+fastapi
+uvicorn 
+pydantic
+python-dotenv
+pydantic-settings
+psycopg2-binary
+prisma
+pandas 
+openpyxl 
+python-multipart

@@ -1,0 +1,34 @@
+// prisma/schema.prisma
+datasource db {
+  provider = "postgresql"   // or "postgresql", "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-py"
+  output   = "../app/db/generated"
+  recursive_type_depth = -1
+}
+
+model Company {
+  id       Int      @id @default(autoincrement())
+  name     String
+  location String
+  products Product[]
+}
+
+model Category {
+  id       Int      @id @default(autoincrement())
+  name     String
+  products Product[]
+}
+
+model Product {
+  id         Int       @id @default(autoincrement())
+  name       String
+  price      Int
+  company    Company?  @relation(fields: [companyId], references: [id])
+  companyId  Int?
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+}
