@@ -18,7 +18,7 @@ function App() {
       <Header search={search} setSearch={setSearch}/>
       <Routes>
         <Route path="/" element={<Home  search={search}/>} />
-        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/product/:id" element={<ProductDetails search={search}/>} />
       </Routes>
     </div>
   )

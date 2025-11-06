@@ -5,7 +5,7 @@ import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
 
 
-function ProductDetails() {
+function ProductDetails({search}) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);

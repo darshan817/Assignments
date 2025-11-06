@@ -2,70 +2,74 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
-import "./Home.css"
+import "./Home.css";
 
-function Home({search}) {
+function Home({ search }) {
   const [products, setProducts] = useState([]);
-
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // const [category, setCategory] = useState(products);
-
-  
-
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
-    // Fetch product data using axios
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get("https://fakestoreapi.com/products");
-        setProducts(response.data);
+        const [productsRes, categoriesRes] = await Promise.all([
+          axios.get("https://fakestoreapi.com/products"),
+          axios.get("https://fakestoreapi.com/products/categories"),
+        ]);
+        setProducts(productsRes.data);
+        setCategories(categoriesRes.data);
       } catch (err) {
-        console.error("Error fetching products:", err);
-        setError("Failed to load products. Please try again later.");
+        console.error("Error fetching data:", err);
       } finally {
         setLoading(false);
       }
     };
-
-    fetchProducts();
+    fetchData();
   }, []);
 
-  const filtered = products.filter((p) =>
-    p.title.toLowerCase().includes(search.toLowerCase())
-  );
-
   if (loading) return <Loader />;
-  if (error) return <h3 style={{ textAlign: "center", color: "red" }}>{error}</h3>;
 
-  
-  
+  // Filter products by search and category
+  const filteredProducts = products.filter((p) => {
+    const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase());
+    const matchesCategory = selectedCategory === "all" || p.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
   return (
-    <>
-    {/* <div>
-      <ul>
-        {
-          products.map((x) => {
-            <li>x.category</li>
-          }) 
-        }
-        <li>ALL</li>
-      </ul>
-    </div> */}
-    <div className="" style={{ padding: "70px" }}>
+    <div className="home-container">
+      {/* Category Buttons */}
+      <div className="category-list">
+        <button
+          className={`category-btn ${selectedCategory === "all" ? "active" : ""}`}
+          onClick={() => setSelectedCategory("all")}
+        >
+          All
+        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`category-btn ${selectedCategory === cat ? "active" : ""}`}
+            onClick={() => setSelectedCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
 
+      {/* Product Grid */}
       <div className="product-grid">
-        {filtered.length > 0 ? (
-          filtered.map((product) => (
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
-          ))) : 
-          (<h3 style={{ textAlign: "center", width: "100%" }}>No products found</h3>)
-        }
+          ))
+        ) : (
+          <p className="no-products">No products found.</p>
+        )}
       </div>
     </div>
-    </>
-  ) ;
+  );
 }
 
 export default Home;
