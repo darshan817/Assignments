@@ -3,8 +3,9 @@ import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
 import "./Home.css";
+import Header from "../components/Header";
 
-function Home({ search }) {
+function Home({ search, setSearch }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,6 +39,8 @@ function Home({ search }) {
   });
 
   return (
+    <>
+    {<Header search={search} setSearch={setSearch}/>}
     <div className="home-container">
       {/* Category Buttons */}
       <div className="category-list">
@@ -69,6 +72,8 @@ function Home({ search }) {
         )}
       </div>
     </div>
+    </>
+
   );
 }
 
