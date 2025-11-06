@@ -6,7 +6,7 @@ function Header({search,setSearch}) {
 
     return (
         <header className="header">
-            <h2 className="logo">🛍️ MyShop</h2>
+            <h2 className="logo">D-Shop</h2>
             <input
                 className="input"
                 type="text"
