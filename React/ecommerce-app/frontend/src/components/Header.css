@@ -1,0 +1,214 @@
+/* -------------------- */
+/* GLOBAL HEADER STYLES */
+/* -------------------- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  background: linear-gradient(90deg, #ffffff, #f4fff4);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* -------------------- */
+/* LOGO + MENU BUTTON   */
+/* -------------------- */
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2e7d32;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo a {
+  color: #2e7d32;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo a:hover {
+  color: #1b5e20;
+}
+
+.menu-btn {
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2e7d32;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.menu-btn:hover {
+  color: #1b5e20;
+  transform: scale(1.15);
+}
+
+/* -------------------- */
+/* SEARCH BAR           */
+/* -------------------- */
+
+.header input {
+  padding: 8px 14px;
+  width: 240px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.header input:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 6px rgba(46, 125, 50, 0.3);
+}
+
+/* -------------------- */
+/* ICONS + BADGES       */
+/* -------------------- */
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.icons span {
+  cursor: pointer;
+  font-size: 22px;
+  color: #555;
+  transition: transform 0.2s ease, color 0.2s ease;
+  position: relative;
+}
+
+.icons span:hover {
+  transform: scale(1.15);
+  color: #2e7d32;
+}
+
+.cart-link {
+  position: relative;
+  text-decoration: none;
+  color: #555;
+  font-size: 22px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.cart-link:hover {
+  transform: scale(1.15);
+  color: #2e7d32;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #e53e3e;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  min-width: 18px;
+  text-align: center;
+  box-shadow: 0 0 6px rgba(229, 62, 62, 0.4);
+}
+
+/* -------------------- */
+/* PROFILE DROPDOWN     */
+/* -------------------- */
+
+.profile-container {
+  position: relative;
+}
+
+.profile-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 6px;
+  color: #555;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.profile-icon:hover {
+  color: #2e7d32;
+  transform: scale(1.05);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.profile-dropdown p {
+  padding: 12px 16px;
+  margin: 0;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.profile-dropdown p:hover {
+  background: #f2f2f2;
+  color: #2e7d32;
+}
+
+/* -------------------- */
+/* ANIMATIONS           */
+/* -------------------- */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------- */
+/* RESPONSIVE DESIGN    */
+/* -------------------- */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 20px;
+  }
+
+  .header input {
+    width: 100%;
+  }
+
+  .icons {
+    gap: 16px;
+  }
+
+  .profile-dropdown {
+    top: 45px;
+    right: 5px;
+  }
+}
