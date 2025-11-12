@@ -4,8 +4,6 @@ import java.util.stream.Stream;
 
 
 public class Task1 {
-
-    
     public static class Employee {
         private int id;
         private String name;
@@ -43,14 +41,11 @@ public class Task1 {
     }
 
     public static void main(String[] args) {
-
-        
         Employee emp1 = new Employee("Alice", 1, 50000, "HR");
         Employee emp2 = new Employee("Bob", 2, 60000, "IT");
         Employee emp3 = new Employee("Charlie", 3, 70000, "Finance");
         Employee emp4 = new Employee("Diana", 4, 80000, "Marketing");
         Employee emp5 = new Employee("Eve", 5, 90000, "Sales");
-
        
         ArrayList<Employee> employeeList = new ArrayList<>();
         employeeList.add(emp1);

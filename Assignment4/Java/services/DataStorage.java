@@ -15,14 +15,16 @@ public class DataStorage {
     public DataStorage(String baseDir) {
         this.baseDir = baseDir;
         File dir = new File(baseDir);
-        if (!dir.exists()) dir.mkdirs();
+        if (!dir.exists())
+            dir.mkdirs();
     }
 
     // -------------------- STUDENT --------------------
     public List<Student> loadStudents() {
         List<Student> students = new ArrayList<>();
         File file = new File(baseDir, "students.txt");
-        if (!file.exists()) return students;
+        if (!file.exists())
+            return students;
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -62,7 +64,8 @@ public class DataStorage {
     public List<Address> loadAddresses() {
         List<Address> addresses = new ArrayList<>();
         File file = new File(baseDir, "addresses.txt");
-        if (!file.exists()) return addresses;
+        if (!file.exists())
+            return addresses;
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -99,7 +102,8 @@ public class DataStorage {
     public List<SchoolClass> loadClasses() {
         List<SchoolClass> classes = new ArrayList<>();
         File file = new File(baseDir, "classes.txt");
-        if (!file.exists()) return classes;
+        if (!file.exists())
+            return classes;
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;

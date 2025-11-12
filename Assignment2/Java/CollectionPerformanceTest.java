@@ -2,7 +2,6 @@ import java.util.*;
 
 public class CollectionPerformanceTest {
 
-    // ---------- Test Insertion ----------
     public static long testInsertion(List<Integer> list, int n) {
         long start = System.currentTimeMillis();
         for (int i = 0; i < n; i++) {
@@ -12,7 +11,6 @@ public class CollectionPerformanceTest {
         return end - start;
     }
 
-    // ---------- Test Deletion ----------
     public static long testDeletion(List<Integer> list, int n) {
         long start = System.currentTimeMillis();
         for (int i = 0; i < n; i++) {
@@ -32,7 +30,6 @@ public class CollectionPerformanceTest {
             List<Integer> arrayList = new ArrayList<>();
             long arrInsert = testInsertion(arrayList, n);
 
-            // refill for deletion test
             arrayList = new ArrayList<>();
             for (int i = 0; i < n; i++) arrayList.add(i);
             long arrDelete = testDeletion(arrayList, n);
@@ -43,7 +40,6 @@ public class CollectionPerformanceTest {
             List<Integer> linkedList = new LinkedList<>();
             long llInsert = testInsertion(linkedList, n);
 
-            // refill for deletion test
             linkedList = new LinkedList<>();
             for (int i = 0; i < n; i++) linkedList.add(i);
             long llDelete = testDeletion(linkedList, n);
